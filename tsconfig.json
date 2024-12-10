@@ -14,5 +14,5 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "nativewind-env.d.ts"
-, "app/context.jsx", "app/(tabs)/signin.jsx"  ]
+, "app/context.jsx", "app/(tabs)/signin.jsx", "app/(zmain)/index.jsx", "app/(zmain)/wishlist.jsx"  ]
 }
