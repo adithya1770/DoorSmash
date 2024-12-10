@@ -34,14 +34,14 @@ const Index = () => {
       <Text className='text-white text-9xl ml-6 mt-2' style={{fontFamily: 'UrbanBold', fontSize: 150}}>sign up</Text>
       <TextInput
         placeholder="Enter your username"
-        className="w-3/4 h-16 border border-gray-400 px-4 mt-16 ml-6 bg-white rounded-xl tracking-wider"
+        className="w-3/4 h-16 text-3xl border border-gray-400 px-4 mt-16 ml-6 bg-white rounded-xl tracking-wider"
         style={{fontFamily: 'UrbanRegular'}}
         onChangeText={(user) => setUserName(user)}
       />
       <TextInput
         secureTextEntry = {true}
         placeholder="Enter your Password"
-        className="w-3/4 h-16 border border-gray-400 px-4 ml-6 bg-white rounded-xl mt-4 tracking-wider"
+        className="w-3/4 h-16 text-3xl border border-gray-400 px-4 ml-6 bg-white rounded-xl mt-4 tracking-wider"
         style={{fontFamily: 'UrbanRegular'}}
         onChangeText={(pswd) => setPassWord(pswd)}
       />
