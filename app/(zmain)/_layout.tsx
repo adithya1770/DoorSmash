@@ -8,6 +8,7 @@ const _layout = () => {
     <Tabs screenOptions={{tabBarStyle: {backgroundColor: "#000000", borderTopWidth: 0}}}>
         <Tabs.Screen name="index" options={{title: 'Home', tabBarIcon: ({color, size}) => <Ionicons name="home" size={24} color="white"/>, headerShown: false, tabBarLabelStyle: { fontFamily: 'UrbanBold' ,fontSize: 10, color: "white"}}}/>
         <Tabs.Screen name="wishlist" options={{title: 'Cart', tabBarIcon: ({color, size}) => <Ionicons name="cart" size={24} color="white"/>, headerShown: false, tabBarLabelStyle: { fontFamily: 'UrbanBold' ,fontSize: 10, color: "white"}}}/>
+        <Tabs.Screen name="orders" options={{title: 'Cart', tabBarIcon: ({color, size}) => <Ionicons name="cart" size={24} color="white"/>, headerShown: false, tabBarLabelStyle: { fontFamily: 'UrbanBold' ,fontSize: 10, color: "white"}}}/>
     </Tabs>
   )
 }

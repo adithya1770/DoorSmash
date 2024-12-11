@@ -3,9 +3,11 @@ import React, { useEffect, useContext, useState } from 'react'
 import { MyContext } from '../context'
 import { Ionicons } from '@expo/vector-icons'
 import { Pressable } from 'react-native'
+import { useRouter } from 'expo-router' 
 
 const wishlist = () => {
-    const { name } = useContext(MyContext);
+    const router = useRouter();
+    const { name, setCost, setData } = useContext(MyContext);
     const [retrivedData, setRetrivedData] = useState([]);
     const [totalCost, setTotalCost] = useState(null);
     useEffect(() => {
@@ -19,9 +21,11 @@ const wishlist = () => {
             })
             const returnValue = await req.json();
             setRetrivedData(returnValue["data"]);
+            setData(returnValue["data"])
             const costs = retrivedData.map((data) => Number(data.cost));
             const totalCost = costs.reduce((acc, value) => acc+value, 0);
             setTotalCost(Number(totalCost));
+            setCost(totalCost);
         }
         retriveFuntion();
     });
@@ -34,6 +38,10 @@ const wishlist = () => {
             },
             body: JSON.stringify({"name": item})
         })
+    }
+
+    const redirecTer = () => {
+        router.push('/checkout');
     }
   return (
     <View style={{ flex: 1 }}>
@@ -50,12 +58,13 @@ const wishlist = () => {
                     </View>
                 ))}
             </ScrollView>
-
-            <View id="total" className='h-20 w-62 mt-32 bg-white rounded-2xl'>
-            <Pressable><Text className='text-black absolute top-5 left-72 text-3xl' style={{fontFamily: "UrbanItalic"}}>Checkout</Text></Pressable>
-                <Text className='text-black text-4xl mt-5 ml-4' style={{fontFamily: 'UrbanBold'}}>Total   Rs. {totalCost}</Text>
+            <View id="total" className='h-32 w-62 mt-32 bg-white rounded-2xl p-4'>
+            <Pressable onPress={redirecTer} className="bg-black rounded-xl py-2 px-6 self-center mb-2">
+                <Text className='text-white text-3xl' style={{fontFamily: "UrbanItalic", textAlign: 'center'}}>Checkout</Text>
+            </Pressable>
+            <Text className='text-black text-4xl' style={{fontFamily: 'UrbanBold', alignSelf: 'flex-start', marginLeft: 80}}>Total: Rs. {totalCost}</Text>
             </View>
-    </View>
+        </View>
   )
 }
 
