@@ -1,5 +1,6 @@
 import { View, Text } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import { ImageBackground } from 'react-native';
 
 const Orders = () => {
   const [orders, setOrder] = useState([]);
@@ -17,6 +18,13 @@ const Orders = () => {
 
   return (
     <View className="flex-1">
+      <ImageBackground
+        source={{
+          uri: "https://images.unsplash.com/photo-1675937338184-3d8d8f2e94b3?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3",
+        }}
+        resizeMode="cover"
+        className="h-full w-full"
+      >
       <Text className="text-9xl text-white mt-14 ml-3" style={{fontFamily: "UrbanBold"}}>Orders</Text>
       <View>
         {orders.map((item) => (
@@ -31,10 +39,11 @@ const Orders = () => {
                 </Text>
               ))}
             </View>
-            <Text className="text-xl text-white ml-10" style={{fontFamily: "UrbanRegular"}}>Total Cost: Rs. {item.totalCost}</Text>
+            <Text className="text-xl text-white ml-10" style={{fontFamily: "UrbanBold"}}>Total Cost: Rs. {item.totalCost}</Text>
           </View>
         ))}
       </View>
+      </ImageBackground>
     </View>
   );
 };

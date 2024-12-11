@@ -4,6 +4,7 @@ import { MyContext } from '../context'
 import { Ionicons } from '@expo/vector-icons'
 import { Pressable } from 'react-native'
 import { useRouter } from 'expo-router' 
+import { ImageBackground } from 'react-native'
 
 const wishlist = () => {
     const router = useRouter();
@@ -45,6 +46,13 @@ const wishlist = () => {
     }
   return (
     <View style={{ flex: 1 }}>
+        <ImageBackground
+        source={{
+          uri: "https://images.unsplash.com/photo-1675937338184-3d8d8f2e94b3?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3",
+        }}
+        resizeMode="cover"
+        className="h-full w-full"
+      >
             <Text className='text-white text-9xl ml-4 mt-16' style={{ fontFamily: 'UrbanBold', fontSize: 100 }}>Wishlist</Text>
             <StatusBar backgroundColor="transparent" translucent={true} />
             <ScrollView>
@@ -64,6 +72,7 @@ const wishlist = () => {
             </Pressable>
             <Text className='text-black text-4xl' style={{fontFamily: 'UrbanBold', alignSelf: 'flex-start', marginLeft: 80}}>Total: Rs. {totalCost}</Text>
             </View>
+            </ImageBackground>
         </View>
   )
 }
