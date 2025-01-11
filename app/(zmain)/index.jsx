@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { TextInput, Pressable, ScrollView, ImageBackground } from 'react-native';
+import { TextInput, Pressable, ScrollView, ImageBackground, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 const index = () => {
@@ -17,7 +17,7 @@ const index = () => {
       setPdtData(productRouteNew);
     };
     productFetch();
-  }, []); // Add an empty dependency array to avoid infinite calls.
+  }, []);
 
   const addToCart = async (pdtName) => {
     await fetch("https://ecom-backend-tdex.onrender.com/wishlist/addproduct", {
@@ -70,12 +70,8 @@ const index = () => {
         className="h-full w-full"
       >
         <StatusBar translucent={true} backgroundColor="transparent" />
-        <Text className="text-9xl text-white mt-20 ml-4" style={{ fontFamily: "UrbanBold" }}>
-          Home
-        </Text>
-
         <TextInput
-          className="h-14 w-80 mt-2 ml-5 rounded-2xl bg-white pl-4 text-2xl"
+          className="h-14 w-96 mt-12 ml-6 rounded-2xl bg-white pl-4 text-2xl"
           placeholder="search now"
           style={{ fontFamily: 'UrbanRegular' }}
           onChangeText={(text) => setSearch(text)}
@@ -87,8 +83,8 @@ const index = () => {
           </Text>
         </Pressable>
 
-        <Text className="text-2xl text-white ml-10 mt-14" style={{ fontFamily: 'UrbanBold' }}>
-          Search Result : {search}
+        <Text className="text-2xl text-white ml-7 mt-4" style={{ fontFamily: 'UrbanBold' }}>
+          {search}
         </Text>
 
         <ScrollView className="mt-10 overflow-y-scroll">
@@ -96,51 +92,85 @@ const index = () => {
             {pdtData.map((data, index) => (
               <View
                 key={index}
-                className="bg-white h-96 w-96 rounded-xl p-4 mt-4 ml-6 shadow-lg"
+                className="bg-gray-900 h-110 w-96 rounded-xl p-4 mt-4 ml-6 shadow-lg"
               >
-                <Text className="text-2xl text-black" style={{ fontFamily: 'UrbanBold' }}>
+                <Image source={{ uri: data.pdtImage }} style={{ width: 300, height: 300 }}/>
+                <Text className="text-4xl text-white" style={{ fontFamily: 'UrbanBold' }}>
                   {data.pdtName}
                 </Text>
-                <Text className="text-lg text-gray-700 mt-2" style={{ fontFamily: 'UrbanItalic' }}>
+                <Text className="text-sm text-white text-primary mt-2" style={{ fontFamily: 'UrbanRegular' }}>
+                  {data._id}
+                </Text>
+                <Text className="text-xl text-white mt-2" style={{ fontFamily: 'UrbanBold' }}>
                   {data.pdtDetails}
                 </Text>
-                <Text className="text-xl text-primary mt-2" style={{ fontFamily: 'UrbanBold' }}>
+                <Text className="text-4xl text-white text-primary mt-2" style={{ fontFamily: 'UrbanBold' }}>
                   Rs. {data.pdtCost}
                 </Text>
                 <Text className="text-xl text-primary mt-2" style={{ fontFamily: 'UrbanRegular' }}>
-                  {data.pdtAvl}
+                  {data.pdtAvl === "In Stock"?<Text className='text-green-700'>In Stock</Text>:<Text className='text-red-500'>Out of Stock</Text>}
                 </Text>
-                <Text className="text-xl text-primary mt-2" style={{ fontFamily: 'UrbanRegular' }}>
-                  {data._id}
-                </Text>
-                <Text className="text-xl text-primary mt-2" style={{ fontFamily: 'UrbanBold' }}>
+                <Text className="text-xl text-white text-primary mt-2" style={{ fontFamily: 'UrbanBold' }}>
                   Seller - {data.pdtSellerName}
                 </Text>
-                <Text className="text-xl text-primary mt-2 " style={{ fontFamily: 'UrbanBold' }}>
-                  <Ionicons name="star" size={14} color="black" /> Rated {data.pdtAvgRating} out of
-                  5
+                <Text className="text-xl text-primary mt-2 text-yellow-500" style={{ fontFamily: 'UrbanBold' }}>
+                  <Ionicons name="star" size={20} color="golden" /> Rated {Number(data.pdtAvgRating.toFixed(1))} out of 5
                 </Text>
                 {onClick ? (
-                  <View className="h-28 mt-2 w-80 rounded-xl ml-3 bg-black">
-                    <Pressable className="ml-72" onPress={onClicker}>
-                      <Ionicons size={20} name="close" color="white" />
-                    </Pressable>
-                    <Text className="text-white text-xl ml-3" style={{ fontFamily: 'UrbanRegular' }}>
-                      {data.pdtComments}
-                    </Text>
+                  <View className="h-auto mt-4 w-80 rounded-2xl ml-3 bg-gray-900 p-4 shadow-lg">
+                  <Pressable
+                    className="absolute top-3 right-3"
+                    onPress={onClicker}
+                  >
+                    <Ionicons size={24} name="close" color="white" />
+                  </Pressable>
+                
+                  <Text className="text-white text-lg mb-4" style={{ fontFamily: 'UrbanBold' }}>
+                    Add Your Comment
+                  </Text>
+                  <View className="flex-row items-center mb-4">
                     <TextInput
-                      className="h-10 w-40 ml-3 mt-1 bg-white rounded-2xl"
-                      placeholder="comment here"
+                      className="flex-1 h-12 bg-white rounded-lg px-4"
+                      placeholder="Write a comment..."
+                      placeholderTextColor="gray"
                       style={{ fontFamily: 'UrbanRegular' }}
                       onChangeText={(text) => setComment(text)}
-                    ></TextInput>
+                    />
                     <Pressable
-                      className="ml-48 top-16 absolute"
+                      className="ml-3 bg-primary p-3 rounded-full"
                       onPress={() => sendComment(comment, data.pdtSellerName, data.pdtName)}
                     >
-                      <Ionicons name="send" color="white" size={25} />
+                      <Ionicons name="send" color="white" size={20} />
                     </Pressable>
                   </View>
+                  <Text className="text-white text-lg mt-4 mb-2" style={{ fontFamily: 'UrbanBold' }}>
+                    Comments
+                  </Text>
+                    <ScrollView className='overflow-y-scroll'>
+                      {data.pdtComments && data.pdtComments.length > 0 ? (
+                        data.pdtComments.map((comment, index) => (
+                          <View
+                            key={index}
+                            className="mb-3 p-3 bg-gray-700 rounded-lg"
+                          >
+                            <Text
+                              className="text-white text-sm"
+                              style={{ fontFamily: 'UrbanRegular' }}
+                            >
+                              {comment}
+                            </Text>
+                          </View>
+                        ))
+                      ) : (
+                        <Text
+                          className="text-gray-400 text-sm text-center"
+                          style={{ fontFamily: 'UrbanItalic' }}
+                        >
+                          No comments yet. Be the first to add one!
+                        </Text>
+                      )}
+                    </ScrollView>
+                  </View>              
                 ) : null}
                 <View className="flex-row justify-between items-center">
                   <Pressable

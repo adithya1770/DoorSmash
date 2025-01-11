@@ -53,24 +53,28 @@ const wishlist = () => {
         resizeMode="cover"
         className="h-full w-full"
       >
-            <Text className='text-white text-9xl ml-4 mt-16' style={{ fontFamily: 'UrbanBold', fontSize: 100 }}>Wishlist</Text>
+            <Text className='text-white text-9xl ml-4 mt-16' style={{ fontFamily: 'UrbanBold', fontSize: 90 }}>My Cart</Text>
             <StatusBar backgroundColor="transparent" translucent={true} />
-            <ScrollView>
-                {retrivedData.map((data, index) => (
-                    <View key={index}>
-                        <Text className="text-white text-4xl mt-20 ml-4" style={{ fontFamily: 'UrbanBold' }}>{data.name}</Text>
-                        <Text className="text-white text-4xl mt-5 ml-4" style={{ fontFamily: 'UrbanRegular' }}>Rs. {data.cost}</Text>
-                        <Pressable onPress={() => removeItem(data.name)} className='ml-4 mt-3'>
-                            <Ionicons name="trash" color="white" size={40} />
-                        </Pressable>
-                    </View>
-                ))}
+            <ScrollView className="bg-gray-900 p-4 rounded-2xl mt-6">
+            {retrivedData.map((data, index) => (
+                <View key={index} className="bg-gray-800 p-4 rounded-xl mt-6 mx-4 w-96 shadow-lg relative">
+                <Text className="text-white text-3xl" style={{ fontFamily: 'UrbanBold' }}>
+                    {data.name}
+                </Text>
+                <Text className="text-white text-2xl mt-2" style={{ fontFamily: 'UrbanRegular' }}>
+                    Rs. {data.cost}
+                </Text>
+                <Pressable onPress={() => removeItem(data.name)} className="absolute right-5 mt-7 ml-8">
+                    <Ionicons name="trash" color="red" size={40} />
+                </Pressable>
+                </View>
+            ))}
             </ScrollView>
-            <View id="total" className='h-32 w-62 mt-32 bg-white rounded-2xl p-4'>
-            <Pressable onPress={redirecTer} className="bg-black rounded-xl py-2 px-6 self-center mb-2">
-                <Text className='text-white text-3xl' style={{fontFamily: "UrbanItalic", textAlign: 'center'}}>Checkout</Text>
+            <View id="total" className='h-32 w-62 mt-32 bg-gray-900 rounded-2xl p-4'>
+            <Pressable onPress={redirecTer} className="bg-white rounded-xl py-2 px-6 self-center mb-2">
+                <Text className='text-black text-3xl' style={{fontFamily: "UrbanBold", textAlign: 'center'}}>Checkout</Text>
             </Pressable>
-            <Text className='text-black text-4xl' style={{fontFamily: 'UrbanBold', alignSelf: 'flex-start', marginLeft: 80}}>Total: Rs. {totalCost}</Text>
+            <Text className='text-white text-4xl' style={{fontFamily: 'UrbanBold', alignSelf: 'flex-start', marginLeft: 100}}>Total {totalCost}/-</Text>
             </View>
             </ImageBackground>
         </View>
