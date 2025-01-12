@@ -26,9 +26,9 @@ const checkout = () => {
   }
   return (
     <View>
-      <ImageBackground source={{uri: "https://images.unsplash.com/photo-1675937338222-b834fce80ba5?q=80&w=1956&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}}         resizeMode="cover"
+      <ImageBackground source={{uri: "https://i.pinimg.com/736x/1a/34/32/1a3432795d5e796fc56012b120404a0c.jpg"}}         resizeMode="cover"
         className="h-full w-full">
-      <ScrollView className="bg-gray-800 p-4 rounded-3xl">
+      <ScrollView className="p-4 rounded-3xl">
         <Text className="text-white text-8xl ml-8 mt-10" style={{ fontFamily: 'UrbanBold' }}>Invoice</Text>
         {data.map((data, index) => (
             <View key={index} className="bg-gray-700 p-4 rounded-xl mt-6 mx-4">

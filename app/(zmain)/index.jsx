@@ -79,7 +79,7 @@ const index = () => {
     <View className="flex-1">
       <ImageBackground
         source={{
-          uri: "https://images.unsplash.com/photo-1675937338184-3d8d8f2e94b3?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3",
+          uri: "https://i.pinimg.com/736x/f1/24/0d/f1240dfe0560bbfa45b66954482ea634.jpg",
         }}
         resizeMode="cover"
         className="h-full w-full"
