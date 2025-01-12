@@ -26,9 +26,9 @@ const Orders = () => {
         className="h-full w-full"
       >
       <Text className="text-9xl text-white mt-14 ml-8" style={{fontFamily: "UrbanBold"}}>orders</Text>
-      <ScrollView className="bg-gray-900 p-6 rounded-t-3xl">
+      <ScrollView className="p-6 rounded-t-3xl">
         {orders.map((item) => (
-          <View key={item._id} className="bg-black p-6 rounded-lg mb-2">
+          <View key={item._id} className="bg-black p-6 rounded-lg mb-2 border-lime-500 border-2">
             <Text className="text-white text-xl ml-6 mt-4" style={{ fontFamily: 'UrbanRegular' }}>
               Consumer Name: <Text className="font-bold" style={{ fontFamily: 'UrbanItalic'}}>{item.consumerName}</Text>
             </Text>
@@ -46,7 +46,7 @@ const Orders = () => {
               ))}
             </View>
             <Text className="text-xl text-white ml-6 mt-10 pt-6 h-14" style={{ fontFamily: 'UrbanBold' }}>
-              Total Cost   Rs. <Text className="text-green-700 text-4xl">{item.totalCost}</Text>
+              TOTAL COST   Rs. <Text className="text-green-700 text-4xl">{item.totalCost}</Text>
             </Text>
           </View>
         ))}

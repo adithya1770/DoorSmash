@@ -57,7 +57,7 @@ const wishlist = () => {
             <StatusBar backgroundColor="transparent" translucent={true} />
             <ScrollView className='ml-3 mt-10'>
             {retrivedData.map((data, index) => (
-                <View key={index} className="bg-black border-white border-2 p-4 rounded-xl mt-6 mx-4 w-96 shadow-lg relative">
+                <View key={index} className="bg-black p-4 rounded-xl mt-6 mx-4 border-lime-500 border-2 w-96 shadow-lg relative">
                 <Text className="text-white text-2xl" style={{ fontFamily: 'UrbanBold' }}>
                     {data.name}
                 </Text>
@@ -77,7 +77,7 @@ const wishlist = () => {
             <Pressable onPress={redirecTer} className="bg-white rounded-xl py-2 px-6 self-center mb-2">
                 <Text className='text-black text-3xl' style={{fontFamily: "UrbanBold", textAlign: 'center'}}>Checkout</Text>
             </Pressable>
-            <Text className='text-white text-4xl' style={{fontFamily: 'UrbanBold', alignSelf: 'flex-start', marginLeft: 92}}>Total {totalCost}/-</Text>
+            <Text className='text-white text-2xl pt-3 pl-4' style={{fontFamily: 'UrbanBold', alignSelf: 'flex-start', marginLeft: 92}}>Total <Text className='text-4xl text-green-500'>{totalCost}/-</Text></Text>
             </View>
             </ImageBackground>
         </View>

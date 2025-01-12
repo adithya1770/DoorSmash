@@ -125,7 +125,7 @@ const index = () => {
             {pdtData.map((data, index) => (
               <View
                 key={index}
-                className="bg-black border-white border-2 h-110 w-96 rounded-xl p-4 mt-4 ml-6 shadow-lg"
+                className="bg-black h-110 w-96 rounded-xl p-4 mt-4 ml-6 shadow-lg border-lime-500 hover:border-red-500 hover:border-2 border-2"
               >
                 <Image source={{ uri: data.pdtImage }} style={{ width: 300, height: 300, borderRadius: 20, marginLeft: 5 }}/>
                 <Text className="text-6xl text-white mt-4" style={{ fontFamily: 'UrbanBold' }}>
@@ -150,7 +150,7 @@ const index = () => {
                   <Ionicons name="star" size={20} color="golden" /> Rated {Number(data.pdtAvgRating.toFixed(1))} out of 5
                 </Text>
                 {onClick ? (
-                  <View className="h-auto mt-4 w-80 rounded-2xl ml-3 bg-gray-900 p-4 shadow-lg">
+                  <View className="h-auto mt-4 w-80 rounded-2xl ml-3 bg-lime-900 p-4 shadow-lg">
                   <Pressable
                     className="absolute top-3 right-3"
                     onPress={onClicker}
@@ -184,7 +184,7 @@ const index = () => {
                         data.pdtComments.map((comment, index) => (
                           <View
                             key={index}
-                            className="mb-3 p-3 bg-gray-700 rounded-lg"
+                            className="mb-3 p-3 bg-lime-700 rounded-lg"
                           >
                             <Text
                               className="text-white text-sm"

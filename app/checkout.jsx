@@ -31,7 +31,7 @@ const checkout = () => {
       <ScrollView className="p-4 rounded-3xl">
         <Text className="text-white text-8xl ml-8 mt-10" style={{ fontFamily: 'UrbanBold' }}>Invoice</Text>
         {data.map((data, index) => (
-            <View key={index} className="bg-gray-700 p-4 rounded-xl mt-6 mx-4">
+            <View key={index} className="bg-gray-700 border-gray-900 border-2 p-4 rounded-xl mt-6 mx-4">
                 <Text className="text-white text-3xl" style={{ fontFamily: 'UrbanBold' }}>{data.name}</Text>
                 <Text className="text-white text-3xl mt-2" style={{ fontFamily: 'UrbanRegular' }}>Rs. {data.cost}</Text>
             </View>
