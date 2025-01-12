@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { ImageBackground } from 'react-native';
 
@@ -25,10 +25,10 @@ const Orders = () => {
         resizeMode="cover"
         className="h-full w-full"
       >
-      <Text className="text-9xl text-white mt-14 ml-3" style={{fontFamily: "UrbanBold"}}>Orders</Text>
-      <View className="bg-gray-900 p-6 rounded-2xl">
+      <Text className="text-9xl text-white mt-14 ml-8" style={{fontFamily: "UrbanBold"}}>orders</Text>
+      <ScrollView className="bg-gray-900 p-6 rounded-t-3xl">
         {orders.map((item) => (
-          <View key={item._id} className="bg-gray-800 p-6 rounded-lg mb-6">
+          <View key={item._id} className="bg-black p-6 rounded-lg mb-2">
             <Text className="text-white text-xl ml-6 mt-4" style={{ fontFamily: 'UrbanRegular' }}>
               Consumer Name: <Text className="font-bold" style={{ fontFamily: 'UrbanItalic'}}>{item.consumerName}</Text>
             </Text>
@@ -45,12 +45,12 @@ const Orders = () => {
                 </Text>
               ))}
             </View>
-            <Text className="text-xl text-white ml-6 mt-10 h-14" style={{ fontFamily: 'UrbanBold' }}>
-              Total Cost: Rs. <Text className="text-green-700 text-3xl">{item.totalCost}</Text>
+            <Text className="text-xl text-white ml-6 mt-10 pt-6 h-14" style={{ fontFamily: 'UrbanBold' }}>
+              Total Cost   Rs. <Text className="text-green-700 text-4xl">{item.totalCost}</Text>
             </Text>
           </View>
         ))}
-      </View>
+      </ScrollView>
       </ImageBackground>
     </View>
   );

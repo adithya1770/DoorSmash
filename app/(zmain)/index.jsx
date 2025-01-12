@@ -60,6 +60,21 @@ const index = () => {
     setSearch(responseSearch["result"][0]);
   };
 
+  const sort = async () => {
+    const pdtDataArray = [...pdtData].sort((a, b) => a.pdtCost-b.pdtCost);
+    setPdtData(pdtDataArray);
+  }
+
+  const ratingSort = async () => {
+    const pdtArrayNew = [...pdtData].sort((a, b) => b.pdtAvgRating - a.pdtAvgRating);
+    setPdtData(pdtArrayNew);
+  }
+
+  const popularSort = async () => {
+    const pdtArrayNew = [...pdtData].sort((a, b) => b.appealFactor - a.appealFactor);
+    setPdtData(pdtArrayNew);
+  }
+
   return (
     <View className="flex-1">
       <ImageBackground
@@ -71,15 +86,33 @@ const index = () => {
       >
         <StatusBar translucent={true} backgroundColor="transparent" />
         <TextInput
-          className="h-14 w-96 mt-12 ml-6 rounded-2xl bg-white pl-4 text-2xl"
+          className="h-14 w-96 mt-12 ml-6 rounded-t-2xl bg-white pl-4 text-2xl"
           placeholder="search now"
           style={{ fontFamily: 'UrbanRegular' }}
           onChangeText={(text) => setSearch(text)}
         />
 
-        <Pressable className="bg-white h-10 rounded-e-2xl w-32 ml-6 pl-4 mt-2">
+        <Pressable className="bg-white h-10 rounded-b-2xl w-32 ml-6 pl-4 mt-2">
           <Text style={{ fontFamily: 'UrbanBold' }} className="text-3xl" onPress={searchBtn}>
             search
+          </Text>
+        </Pressable>
+
+        <Pressable className="bg-white h-10 rounded-b-2xl w-14 right-8 pl-4 absolute top-28">
+          <Text style={{ fontFamily: 'UrbanBold' }} className="text-3xl" onPress={sort}>
+            <Ionicons name="cash" size={20} color="golden"/>
+          </Text>
+        </Pressable>
+
+        <Pressable className="bg-white h-10 rounded-b-2xl w-14 right-24 pl-4 absolute top-28">
+          <Text style={{ fontFamily: 'UrbanBold' }} className="text-3xl" onPress={ratingSort}>
+            <Ionicons name="star" size={20} color="golden"/>
+          </Text>
+        </Pressable>
+
+        <Pressable className="bg-white h-10 rounded-b-2xl w-14 right-40 pl-4 absolute top-28">
+          <Text style={{ fontFamily: 'UrbanBold' }} className="text-3xl" onPress={popularSort}>
+            <Ionicons name="trending-up" size={20} color="golden"/>
           </Text>
         </Pressable>
 
@@ -92,14 +125,14 @@ const index = () => {
             {pdtData.map((data, index) => (
               <View
                 key={index}
-                className="bg-gray-900 h-110 w-96 rounded-xl p-4 mt-4 ml-6 shadow-lg"
+                className="bg-black border-white border-2 h-110 w-96 rounded-xl p-4 mt-4 ml-6 shadow-lg"
               >
-                <Image source={{ uri: data.pdtImage }} style={{ width: 300, height: 300 }}/>
-                <Text className="text-4xl text-white" style={{ fontFamily: 'UrbanBold' }}>
+                <Image source={{ uri: data.pdtImage }} style={{ width: 300, height: 300, borderRadius: 20, marginLeft: 5 }}/>
+                <Text className="text-6xl text-white mt-4" style={{ fontFamily: 'UrbanBold' }}>
                   {data.pdtName}
                 </Text>
                 <Text className="text-sm text-white text-primary mt-2" style={{ fontFamily: 'UrbanRegular' }}>
-                  {data._id}
+                  Product ID - {data._id}
                 </Text>
                 <Text className="text-xl text-white mt-2" style={{ fontFamily: 'UrbanBold' }}>
                   {data.pdtDetails}

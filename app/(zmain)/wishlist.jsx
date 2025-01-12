@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, ScrollView } from 'react-native'
+import { View, Text, StatusBar, ScrollView, Image } from 'react-native'
 import React, { useEffect, useContext, useState } from 'react'
 import { MyContext } from '../context'
 import { Ionicons } from '@expo/vector-icons'
@@ -53,15 +53,18 @@ const wishlist = () => {
         resizeMode="cover"
         className="h-full w-full"
       >
-            <Text className='text-white text-9xl ml-4 mt-16' style={{ fontFamily: 'UrbanBold', fontSize: 90 }}>My Cart</Text>
+            <Text className='text-white text-9xl ml-8 mt-16' style={{ fontFamily: 'UrbanBold', fontSize: 90 }}>my cart</Text>
             <StatusBar backgroundColor="transparent" translucent={true} />
-            <ScrollView className="bg-gray-900 p-4 rounded-2xl mt-6">
+            <ScrollView className='ml-3 mt-10'>
             {retrivedData.map((data, index) => (
-                <View key={index} className="bg-gray-800 p-4 rounded-xl mt-6 mx-4 w-96 shadow-lg relative">
-                <Text className="text-white text-3xl" style={{ fontFamily: 'UrbanBold' }}>
+                <View key={index} className="bg-black border-white border-2 p-4 rounded-xl mt-6 mx-4 w-96 shadow-lg relative">
+                <Text className="text-white text-2xl" style={{ fontFamily: 'UrbanBold' }}>
                     {data.name}
                 </Text>
-                <Text className="text-white text-2xl mt-2" style={{ fontFamily: 'UrbanRegular' }}>
+                <Text className="text-white text-sm mt-2" style={{ fontFamily: 'UrbanRegular' }}>
+                    {data.id}
+                </Text>
+                <Text className="text-white text-2xl mt-2" style={{ fontFamily: 'UrbanBold' }}>
                     Rs. {data.cost}
                 </Text>
                 <Pressable onPress={() => removeItem(data.name)} className="absolute right-5 mt-7 ml-8">
@@ -70,11 +73,11 @@ const wishlist = () => {
                 </View>
             ))}
             </ScrollView>
-            <View id="total" className='h-32 w-62 mt-32 bg-gray-900 rounded-2xl p-4'>
+            <View id="total" className='h-32 w-62 mt-32 bg-black rounded-t-2xl p-4'>
             <Pressable onPress={redirecTer} className="bg-white rounded-xl py-2 px-6 self-center mb-2">
                 <Text className='text-black text-3xl' style={{fontFamily: "UrbanBold", textAlign: 'center'}}>Checkout</Text>
             </Pressable>
-            <Text className='text-white text-4xl' style={{fontFamily: 'UrbanBold', alignSelf: 'flex-start', marginLeft: 100}}>Total {totalCost}/-</Text>
+            <Text className='text-white text-4xl' style={{fontFamily: 'UrbanBold', alignSelf: 'flex-start', marginLeft: 92}}>Total {totalCost}/-</Text>
             </View>
             </ImageBackground>
         </View>
