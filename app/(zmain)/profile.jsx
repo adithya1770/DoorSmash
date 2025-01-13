@@ -25,11 +25,11 @@ const profile = () => {
           <Pressable onPress={LinkedinRedirect}>
             <Ionicons name="logo-linkedin" size={80}/>
           </Pressable>
-          <Pressable onPress={GitRedirect} className="absolute left-24">
+          <Pressable onPress={GitRedirect} className="absolute left-28">
             <Ionicons name="logo-github" size={80}/>
           </Pressable>
-          <Pressable onPress={cc} className="absolute left-52">
-            <Ionicons name="logo-closed-captioning" size={80}/>
+          <Pressable onPress={cc} className="absolute left-56">
+            <Ionicons name="globe" size={80}/>
           </Pressable>
         </View>
         <Text className="text-black text-3xl mt-2 pt-2 ml-28" style={{fontFamily: 'UrbanBold'}}>made using</Text>

@@ -207,22 +207,22 @@ const index = () => {
                 ) : null}
                 <View className="flex-row justify-between items-center">
                   <Pressable
-                    className="bg-primary h-10 mt-2 rounded-xl justify-center items-center"
+                    className="bg-lime-500 h-10 mt-4 rounded-xl justify-center items-center"
                     onPress={() => addToCart(data.pdtName)}
                   >
                     <Text
-                      className="text-white text-lg h-10 w-32 pl-4 rounded-2xl pt-1 mt-4 bg-black"
+                      className="text-white text-lg h-10 w-32 pl-4 rounded-2xl pt-1 mt-2 bg-black"
                       style={{ fontFamily: 'UrbanBold' }}
                     >
                       Add to Cart
                     </Text>
                   </Pressable>
                   <Pressable
-                    className="bg-primary h-10 mt-2 rounded-xl justify-center items-center"
+                    className="bg-lime-500 h-10 mt-4 rounded-xl justify-center items-center"
                     onPress={onClicker}
                   >
                     <Text
-                      className="text-white text-lg h-10 w-32 pl-4 rounded-2xl pt-1 mt-4 bg-black"
+                      className="text-white text-lg h-10 w-32 pl-4 rounded-2xl pt-1 mt-2 bg-black"
                       style={{ fontFamily: 'UrbanBold' }}
                     >
                       Comments
