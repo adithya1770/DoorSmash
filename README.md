@@ -45,8 +45,8 @@ Follow the steps below to install and run the application locally:
 ## Tech Stack
 
 * **Frontend**:
-    * React.js: For building a dynamic user interface.
-    * Tailwind CSS: For styling and responsive design.
+    * React Native: For building a dynamic user interface.
+    * Nativewind : For styling and responsive design.
 
 * **Backend**:
     * Node.js: For building the server-side logic.
